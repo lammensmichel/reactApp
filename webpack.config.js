@@ -14,7 +14,7 @@ let config = {
     module: {
         loaders:[{
             test: /\.(js|jsx)$/,
-            loader:'babel-loader'
+            loader:['react-hot-loader/webpack', 'babel-loader']
         }]
     },
     plugins: [
@@ -37,6 +37,9 @@ if(process.env.NODE_ENV === 'production'){
     config.plugins.push(
         new webpack.optimize.OccurrenceOrderPlugin()
     )
+} else {
+    config.plugins.push(new webpack.NamedModulesPlugin())
+    config.entry = ['react-hot-loader/patch', config.entry]
 }
 
 module.exports = config

@@ -11,8 +11,9 @@ export default class Hello extends React.Component {
     }
 
     render() {
-        return <div>salut {this.props.name}
+        return <div>salut {this.props.name}  <br/>
         compteur: {this.state.counter}<br/>
+        {this.state.counter >= 10 && <div>vous avez dépassé 10</div>}
         <button onClick={this.increment}>Incrémenter</button>
         </div>
     }
